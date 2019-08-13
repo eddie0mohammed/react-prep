@@ -22,6 +22,11 @@ const appReducer = (state = initialState, action) => {
                 allOrders: action.payload
             }
 
+        case actionTypes.FETCH_ALL_WORKERS:
+            return {
+                ...state,
+                allEmployees: action.payload
+            }
 
         default:
             return state

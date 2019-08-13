@@ -1,2 +1,4 @@
 
 export const FETCH_ALL_ORDERS = 'FETCH_ALL_ORDERS';
+
+export const FETCH_ALL_WORKERS = 'FETCH_ALL_WORKERS';
