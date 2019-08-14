@@ -15,6 +15,7 @@ class SearchBar extends React.Component{
         e.preventDefault();
         console.log(this.state.id);
         this.setState({id : ''})
+        
     }
 
     handleChange = (e) => {
