@@ -3,6 +3,11 @@ import React from 'react'
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import {withRouter} from 'react-router-dom';
+import {compose} from 'redux';
+import {connect} from 'react-redux';
+
+import * as actionCreators from '../../actions/actionCreators';
 
 
 class SearchBar extends React.Component{
@@ -11,10 +16,13 @@ class SearchBar extends React.Component{
         id: ''
     }
 
+
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.id);
+        // console.log(this.state.id);
+        this.props.updateId(this.state.id);
         this.setState({id : ''})
+        this.props.history.push(`/${this.state.id}`);
         
     }
 
@@ -49,4 +57,19 @@ class SearchBar extends React.Component{
     }
 }
 
-export default SearchBar
+const mapStateToProps = (state) => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateId: (id) => dispatch(actionCreators.updateID(id)),
+    }
+}
+
+export default compose(
+    withRouter,
+    connect(mapStateToProps, mapDispatchToProps),
+)(SearchBar)

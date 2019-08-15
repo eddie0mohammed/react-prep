@@ -9,7 +9,8 @@ const initialState = {
     // email: 'email',
     // deadline: 'deadline'
     allOrders: null,
-    allEmployees: null
+    allEmployees: null,
+    id: null
 }
 
 const appReducer = (state = initialState, action) => {
@@ -26,6 +27,12 @@ const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allEmployees: action.payload
+            }
+
+        case actionTypes.FETCH_SPECIFIC_WORKERS:
+            return {
+                ...state,
+                id: action.payload
             }
 
         default:

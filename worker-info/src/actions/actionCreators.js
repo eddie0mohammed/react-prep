@@ -61,3 +61,22 @@ const fetchWorker = (payload) => {
         payload: payload
     }
 }
+
+
+export const updateID = (id) => {
+    return {
+        type: actionTypes.FETCH_SPECIFIC_WORKERS,
+        payload: id
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
