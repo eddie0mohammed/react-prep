@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 
 import BuildControls from '../../components/Burger/BuildControls.js/BuildControls';
 import Burger from '../../components/Burger/Burger';
+import Modal from '../../UI/Modal/Modal';
+import Backdrop from '../../UI/Backdrop/Backdrop';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 class BurgerBuilder extends Component {
 
@@ -19,13 +22,28 @@ class BurgerBuilder extends Component {
     //     }
     // }
 
-
     render() {
+        const PRICES = {
+            meat: 1.2,
+            cheese: 0.5,
+            bacon: 0.7,
+            salad: 0.4
+        }
+        const {meat, cheese, bacon, salad, purchasing} = this.props.ingredients;
+        let totalPrice = this.props.basePrice + (meat * PRICES.meat) + (cheese * PRICES.cheese) + (bacon * PRICES.bacon) + (salad * PRICES.salad);
+
+        // console.log(totalPrice.toFixed(2));
+        
+        
+    
         // console.log(this.props.ingredients)
+        // console.log(this.props.basePrice);
         return (
             <React.Fragment>
-                <Burger ingredients={this.props.ingredients}/>
-                <BuildControls />
+                <Modal show={purchasing}><OrderSummary /></Modal>
+                <Backdrop show={purchasing}/>
+                <Burger ingredients={this.props.ingredients} />
+                <BuildControls price={totalPrice.toFixed(2)}/>
                 
             </React.Fragment>
         )
@@ -34,7 +52,8 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        ingredients: state.ingredients
+        ingredients: state.ingredients,
+        basePrice: state.ingredients.price
     }
 }
 

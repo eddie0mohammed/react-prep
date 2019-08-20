@@ -9,6 +9,9 @@ const Burger = (props) => {
 
     const {ingredients} = props;
     let IngArr = Object.entries(ingredients);
+    IngArr.pop(); //remove price from array
+    IngArr.pop(); //remove purchasing from array
+    // console.log(IngArr);
     let newArr = [];
     IngArr.forEach(elem => {
         for (let i = 0; i < elem[1]; i++){
@@ -21,7 +24,7 @@ const Burger = (props) => {
         <div className={classes.Burger}>
             <BurgerIngredients type="bread-top"/>
            
-           {newArr.length !== 0 ? 
+           {newArr.length > 0 ? 
             newArr.map((ingredient,i) => {
                 return <BurgerIngredients key={i} type={ingredient} />
             })
@@ -30,6 +33,7 @@ const Burger = (props) => {
         }
         
             <BurgerIngredients type="bread-bottom"/>
+
         </div>
     )
 }

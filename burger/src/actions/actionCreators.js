@@ -15,3 +15,17 @@ export const remove = (ingredient) => {
         payload: ingredient
     }
 }
+
+
+export const order_now = () => {
+    return {
+        type: actionTypes.ORDER_NOW
+    }
+}
+
+
+export const closeModal = () => {
+    return {
+        type: actionTypes.CLOSE_MODAL
+    }
+}
