@@ -3,10 +3,12 @@
 import {combineReducers} from 'redux';
 
 import ingredientsReducer from './ingReducer';
+import functionalityReducer from  './functionalityReducer';
 
 const rootReducer = combineReducers({
 
-    ingredients: ingredientsReducer
+    ingredients: ingredientsReducer,
+    func: functionalityReducer,
     
 })
 

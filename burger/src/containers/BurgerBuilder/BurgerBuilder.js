@@ -8,6 +8,8 @@ import Modal from '../../UI/Modal/Modal';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
+import * as actionCreators from '../../actions/actionCreators';
+
 class BurgerBuilder extends Component {
 
     // constructor(props){
@@ -40,8 +42,8 @@ class BurgerBuilder extends Component {
         // console.log(this.props.basePrice);
         return (
             <React.Fragment>
-                <Modal show={purchasing}><OrderSummary /></Modal>
-                <Backdrop show={purchasing}/>
+                <Modal show={purchasing}><OrderSummary totalPrice={totalPrice}/></Modal>
+                <Backdrop show={purchasing} clicked={this.props.closeModal}/>
                 <Burger ingredients={this.props.ingredients} />
                 <BuildControls price={totalPrice.toFixed(2)}/>
                 
@@ -57,4 +59,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(BurgerBuilder);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        closeModal: () => dispatch(actionCreators.closeModal()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BurgerBuilder);

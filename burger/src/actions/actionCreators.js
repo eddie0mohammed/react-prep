@@ -29,3 +29,15 @@ export const closeModal = () => {
         type: actionTypes.CLOSE_MODAL
     }
 }
+
+export const purchaseContinue = () => {
+    return {
+        type: actionTypes.PURCHASE_CONTINUE
+    }
+}
+
+export const closeSideDrawer = () => {
+    return {
+        type: actionTypes.CLOSE_SIDEDRAWER
+    }
+}

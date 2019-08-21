@@ -43,6 +43,11 @@ const ingredientsReducer = (state = initialState, action) => {
                 purchasing: false
             }
 
+        case(actionTypes.PURCHASE_CONTINUE):
+            return {
+                ...state,
+                purchasing: false
+            }
             
         default:
             return state

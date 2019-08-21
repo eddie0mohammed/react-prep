@@ -2,8 +2,12 @@ import React from 'react'
 
 import {connect} from 'react-redux';
 
+import * as actionCreators from '../../../actions/actionCreators';
+import Button from '../../../UI/Button/Button';
+
 const OrderSummary = (props) => {
 
+    const {totalPrice} = props;
     // const {meat, salad, cheese, bacon} = props.ingredients;
     const {price, purchasing, ...ingredientsArray} = props.ingredients;
 
@@ -23,7 +27,12 @@ const OrderSummary = (props) => {
                     return <li key={i} style={{textTransform: 'capitalize'}}>{elem[0]}: {elem[1]} {elem[1] > 1 ? ' pcs' : ' pc'}</li>
                 })}
             </ul>
+            <p><strong>Total: ${totalPrice.toFixed(2)}</strong></p>
             <p>Continue to Checkout?</p>
+            <Button clicked={props.closeModal} btnType="Danger">Cancel</Button>
+            <Button btnType="Success" clicked={props.purchaseContinue}>Continue</Button>
+            {/* <button onClick={props.closeModal}>Cancel</button>
+            <button>Continue</button> */}
         </React.Fragment>
     )
 }
@@ -34,4 +43,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(OrderSummary)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        closeModal: () => dispatch(actionCreators.closeModal()),
+        purchaseContinue: () => dispatch(actionCreators.purchaseContinue()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OrderSummary)
