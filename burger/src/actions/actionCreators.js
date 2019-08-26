@@ -41,3 +41,9 @@ export const closeSideDrawer = () => {
         type: actionTypes.CLOSE_SIDEDRAWER
     }
 }
+
+export const toggleSideDrawer = () => {
+    return {
+        type: actionTypes.TOGGLE_SIDEDRAWER
+    }
+}

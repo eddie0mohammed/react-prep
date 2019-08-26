@@ -15,6 +15,11 @@ const functionalityReducer = (state = initialState, action) => {
                 showSideDrawer: false
             }
         
+        case(actionTypes.TOGGLE_SIDEDRAWER):
+            return {
+                ...state,
+                showSideDrawer: !state.showSideDrawer
+            }
 
 
         default:

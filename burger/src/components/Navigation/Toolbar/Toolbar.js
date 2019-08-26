@@ -4,10 +4,11 @@ import classes from './Toolbar.module.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
 
+
 const Toolbar = (props) => {
     return (
         <header className={classes.Toolbar}>
-            <div>Menu</div>
+            <div onClick={props.toggleSideDrawer} className={classes.ToggleIcon}>Menu</div>
             <div className={classes.Logo}>
                 <Logo/>
             </div>
@@ -20,4 +21,11 @@ const Toolbar = (props) => {
     )
 }
 
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         toggleSideDrawer: () => dispatch(actionCreators.toggleSideDrawer()),
+//     }
+// }
+
+// export default connect(null, mapDispatchToProps)(Toolbar)
 export default Toolbar

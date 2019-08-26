@@ -12,17 +12,18 @@ import {connect} from 'react-redux';
 
 const SideDrawer = (props) => {
 
+    // const sideClasses = props.showSideDrawer ? classes.Open : classes.Close;
   
 
     return (
-
-        <React.Fragment>
+        <>
+        
             
             <div className={classes.Backdrop}>
                 <Backdrop show={props.showSideDrawer} clicked={props.closeSideDrawer} />
             </div>
 
-            <div className={classes.SideDrawer}>
+            <div className={`${classes.SideDrawer} ${props.showSideDrawer ? `${classes.Open}` : `${classes.Close}`}`}>
 
                 <div className={classes.Logo}>
                     <Logo />
@@ -34,7 +35,7 @@ const SideDrawer = (props) => {
                 
             </div>
            
-        </React.Fragment>
+        </> 
     )
 }
 
